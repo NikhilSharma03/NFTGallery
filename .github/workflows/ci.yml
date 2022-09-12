@@ -16,11 +16,7 @@ jobs:
         with:
           node-version: "14"
           cache: "npm"
-      # install dependencies
       - run: npm ci
-      # run ESLint & Prettier
       - run: npm run lint
-      - run: npm run prettier
-      # verify that there are no build errors
       - run: npm run build
 
