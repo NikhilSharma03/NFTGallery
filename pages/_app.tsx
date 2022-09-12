@@ -21,7 +21,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <ThemeProvider theme={theme == "light" ? lightTheme : darkTheme}>
       <ChakraProvider>
         <GlobalStyles />
-        <Layout toggleTheme={toggleTheme}>
+        <Layout theme={theme} toggleTheme={toggleTheme}>
           <Component {...pageProps} />
         </Layout>
       </ChakraProvider>
