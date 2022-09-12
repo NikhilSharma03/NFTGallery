@@ -1,11 +1,15 @@
 import styled from "styled-components";
-import { ModalContent, Button } from "@chakra-ui/react";
+import { Button } from "@chakra-ui/react";
 
 export const Nav = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 1.5rem 3rem;
+
+  @media (max-width: 600px) {
+    padding: 1.5rem;
+  }
 `;
 
 export const Logo = styled.h1`
@@ -25,12 +29,30 @@ export const Logo = styled.h1`
   color: transparent;
 `;
 
+export const ButtonDrawer = styled(Button)`
+  background: ${({ theme }) => theme.primary};
+  font-size: 1rem;
+  display: none;
+
+  &:hover {
+    background: ${({ theme }) => theme.primaryDark};
+  }
+
+  @media (max-width: 600px) {
+    display: inline-block;
+  }
+`;
+
 export const ButtonMode = styled(Button)`
   background: transparent;
   font-size: 2rem;
 
   &:hover {
     background: transparent;
+  }
+
+  @media (max-width: 600px) {
+    display: none;
   }
 `;
 
@@ -42,12 +64,8 @@ export const ButtonPrimary = styled(Button)`
   &:hover {
     background: ${({ theme }) => theme.primaryDark};
   }
-`;
 
-export const ModalMain = styled(ModalContent)`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) !important;
-  margin: 0;
+  @media (max-width: 600px) {
+    display: none;
+  }
 `;
