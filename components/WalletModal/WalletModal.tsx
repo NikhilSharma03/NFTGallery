@@ -1,7 +1,7 @@
 import { ModalOverlay, Modal, ModalBody } from "@chakra-ui/react";
 import type { NextPage } from "next";
 import Image from "next/image";
-import { ModalMain, WalletCard, WalletHeading } from "./walletModal.style";
+import { ModalMain, WalletCard, WalletHeading } from "./WalletModal.style";
 
 interface Props {
   isOpen: boolean;

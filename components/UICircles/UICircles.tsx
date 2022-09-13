@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import {
   GreenUICircleContainer,
   PurpleUICircleContainer,
-} from "./uiCircles.style";
+} from "./UICircles.style";
 
 type Props = {
   type: string;
