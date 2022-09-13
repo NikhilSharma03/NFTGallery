@@ -5,13 +5,14 @@ import Navbar from "./../Navbar/navbar";
 import SideDrawer from "../SideDrawer/sideDrawer";
 import { useDisclosure } from "@chakra-ui/react";
 
-interface Props {
+type Props = {
   children: React.ReactNode;
   theme: string;
   toggleTheme: () => void;
-}
+};
 
 const Layout: NextPage<Props> = ({ children, theme, toggleTheme }) => {
+  // SideDrawer methods
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef();
 

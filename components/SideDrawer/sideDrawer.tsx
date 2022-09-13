@@ -15,14 +15,14 @@ import {
 } from "./sideDrawer.style";
 import WalletModal from "../WalletModal/walletModal";
 
-interface Props {
+type Props = {
   btnRef: any;
   isSideDrawerOpen: boolean;
-  openSideDrawer: any;
-  closeSideDrawer: any;
+  openSideDrawer: () => void;
+  closeSideDrawer: () => void;
   theme: string;
   toggleTheme: () => void;
-}
+};
 
 const SideDrawer: NextPage<Props> = ({
   btnRef,
@@ -31,6 +31,7 @@ const SideDrawer: NextPage<Props> = ({
   theme,
   toggleTheme,
 }) => {
+  // Connect Wallet Modal
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (

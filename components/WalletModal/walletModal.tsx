@@ -5,10 +5,11 @@ import { ModalMain, WalletCard, WalletHeading } from "./walletModal.style";
 
 interface Props {
   isOpen: boolean;
-  onClose: any;
+  onClose: () => void;
 }
 
 const WalletModal: NextPage<Props> = ({ isOpen, onClose }) => {
+  // Connect Wallet Handler
   const onConnectWallet = () => {
     onClose();
   };

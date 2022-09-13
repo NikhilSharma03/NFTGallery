@@ -9,12 +9,12 @@ import {
   ButtonDrawer,
 } from "./navbar.style";
 
-interface Props {
+type Props = {
   theme: string;
   btnRef: any;
-  openSideDrawer: any;
+  openSideDrawer: () => void;
   toggleTheme: () => void;
-}
+};
 
 const Navbar: NextPage<Props> = ({
   theme,
@@ -22,6 +22,7 @@ const Navbar: NextPage<Props> = ({
   btnRef,
   openSideDrawer,
 }) => {
+  // Connect Wallet Modal
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
