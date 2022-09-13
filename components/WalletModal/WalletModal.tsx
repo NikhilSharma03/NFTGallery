@@ -15,6 +15,7 @@ import { connectWallet } from "../../redux/action/user";
 import { clearUserError, disconnectWallet } from "../../redux/reducer/user";
 import Alert from "./../Alert/Alert";
 import Loading from "../Loading/Loading";
+import { useRouter } from "next/router";
 
 type Props = {
   isOpen: boolean;
@@ -41,6 +42,8 @@ const WalletModal: NextPage<Props> = ({ isOpen, onClose }) => {
   } = useDisclosure();
   const alertCancelRef = useRef();
 
+  const router = useRouter();
+
   const onConnectWalletHandler = async () => {
     onClose();
     if (isWalletConnected) {
@@ -64,6 +67,7 @@ const WalletModal: NextPage<Props> = ({ isOpen, onClose }) => {
   const onDisconnectWalletHandler = () => {
     onClose();
     onDisconnectWallet();
+    router.push("/");
   };
 
   return (

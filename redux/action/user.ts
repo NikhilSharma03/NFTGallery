@@ -5,10 +5,12 @@ export const connectWallet = createAsyncThunk<
   void,
   { rejectValue: string }
 >("user/connectWallet", async (_, { rejectWithValue }) => {
-  const { ethereum } = window;
+  let win: any = window;
+  const ethereum = win.ethereum;
   if (!ethereum) {
     return rejectWithValue("Failed! Please install MetaMask");
   }
+
   try {
     const accounts = await ethereum.request({
       method: "eth_requestAccounts",
