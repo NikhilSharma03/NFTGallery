@@ -23,6 +23,10 @@ export const SideDrawerButtonPrimary = chakra(Button, {
     background: "primary",
     color: "#fff",
     display: "block",
+    maxWidth: "13rem",
+    overflow: "hidden",
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
     margin: "4rem auto",
     _hover: {
       background: "primaryDark",

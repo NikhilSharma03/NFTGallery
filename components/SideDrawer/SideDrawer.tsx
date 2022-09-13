@@ -13,6 +13,7 @@ import {
   SideDrawerButtonPrimary,
 } from "./SideDrawer.style";
 import WalletModal from "../WalletModal/WalletModal";
+import useAppSelector from "./../../hooks/useAppSelector";
 
 type Props = {
   btnRef: any;
@@ -26,6 +27,13 @@ const SideDrawer: NextPage<Props> = ({
   isSideDrawerOpen,
   closeSideDrawer,
 }) => {
+  const isWalletConnected: boolean = useAppSelector(
+    (state) => state.user.isWalletConnected
+  );
+  const userWalletAccount: string = useAppSelector(
+    (state) => state.user.userWalletAccount
+  );
+
   // Connect Wallet Modal
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -42,7 +50,7 @@ const SideDrawer: NextPage<Props> = ({
         <DrawerHeader></DrawerHeader>
         <DrawerBody>
           <SideDrawerButtonPrimary onClick={onOpen}>
-            Connect Wallet
+            {isWalletConnected ? userWalletAccount : "Connect Wallet"}
           </SideDrawerButtonPrimary>
           {/* Connect Modal */}
           <WalletModal isOpen={isOpen} onClose={onClose} />

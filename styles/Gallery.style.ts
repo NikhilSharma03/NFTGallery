@@ -21,7 +21,7 @@ export const NFTMenu = styled.div`
 
   &::-webkit-scrollbar-track {
     border-radius: 1rem;
-    background-color: ${({ theme }) => theme.grey};
+    background-color: ${({ theme }) => theme.gray};
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   }
 

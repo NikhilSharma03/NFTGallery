@@ -14,7 +14,7 @@ export const ModalMain = chakra(ModalContent, {
 export const WalletCard = chakra(Box, {
   baseStyle: {
     borderWidth: "1px",
-    borderColor: "grey",
+    borderColor: "gray",
     overflow: "hidden",
     height: "50vh",
     padding: "2rem",

@@ -1,36 +1,94 @@
-import { ModalOverlay, Modal, ModalBody } from "@chakra-ui/react";
+import { useRef, useState } from "react";
 import type { NextPage } from "next";
 import Image from "next/image";
+import {
+  ModalOverlay,
+  Modal,
+  ModalBody,
+  useDisclosure,
+} from "@chakra-ui/react";
 import { ModalMain, WalletCard, WalletHeading } from "./WalletModal.style";
+import useAppDispatch from "./../../hooks/useAppDispatch";
+import useAppSelector from "./../../hooks/useAppSelector";
+import { connectWallet } from "../../redux/action/user";
+import { clearUserError } from "../../redux/reducer/user";
+import Alert from "./../Alert/Alert";
+import Loading from "../Loading/Loading";
 
-interface Props {
+type Props = {
   isOpen: boolean;
   onClose: () => void;
-}
+};
 
 const WalletModal: NextPage<Props> = ({ isOpen, onClose }) => {
-  // Connect Wallet Handler
-  const onConnectWallet = () => {
+  const [message, setMessage] = useState("");
+
+  const isWalletConnected: boolean = useAppSelector(
+    (state) => state.user.isWalletConnected
+  );
+  const loading: boolean = useAppSelector((state) => state.user.loading);
+
+  const dispatch = useAppDispatch();
+  const onConnectWallet = () => dispatch(connectWallet());
+  const onClearUserError = () => dispatch(clearUserError());
+
+  const {
+    isOpen: isAlertOpen,
+    onOpen: onAlertOpen,
+    onClose: onAlertClose,
+  } = useDisclosure();
+  const alertCancelRef = useRef();
+
+  const onConnectWalletHandler = async () => {
     onClose();
+    if (isWalletConnected) {
+      setMessage("Wallet already Connected!");
+      onAlertOpen();
+      return;
+    }
+    const { payload } = await onConnectWallet();
+    if (payload?.startsWith("Failed")) {
+      setMessage(payload);
+      onAlertOpen();
+    }
+  };
+
+  const onAlertCloseHandler = () => {
+    setMessage("");
+    onClearUserError();
+    onAlertClose();
   };
 
   return (
-    <Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}>
-      <ModalOverlay />
-      <ModalMain>
-        <ModalBody padding="1rem">
-          <WalletCard maxW="lg" borderRadius="lg" onClick={onConnectWallet}>
-            <Image
-              alt="metamask"
-              src="/metamask.png"
-              width={4000}
-              height={4000}
-            />
-            <WalletHeading>Metamask</WalletHeading>
-          </WalletCard>
-        </ModalBody>
-      </ModalMain>
-    </Modal>
+    <>
+      <Loading showModal={loading} />
+      <Alert
+        message={message}
+        cancelRef={alertCancelRef}
+        isOpen={isAlertOpen}
+        onClose={onAlertCloseHandler}
+      />
+      <Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalMain>
+          <ModalBody padding="1rem">
+            <WalletCard
+              maxW="lg"
+              borderRadius="lg"
+              onClick={onConnectWalletHandler}
+            >
+              <Image
+                alt="metamask"
+                src="/metamask.png"
+                width={4000}
+                height={4000}
+              />
+              <WalletHeading>Metamask</WalletHeading>
+            </WalletCard>
+          </ModalBody>
+        </ModalMain>
+      </Modal>
+    </>
   );
 };
 

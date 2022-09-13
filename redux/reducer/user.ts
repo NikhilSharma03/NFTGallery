@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { onConnectWallet } from "../action/user";
+import { connectWallet } from "../action/user";
 
 const initialState = {
   userWalletAccount: "",
@@ -12,26 +12,26 @@ export const userSlice = createSlice({
   name: "users",
   initialState,
   reducers: {
-    onClearUserError: (state) => {
+    clearUserError: (state) => {
       state.error = "";
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(onConnectWallet.pending, (state) => {
+    builder.addCase(connectWallet.pending, (state) => {
       state.loading = true;
     });
-    builder.addCase(onConnectWallet.fulfilled, (state, { payload }) => {
+    builder.addCase(connectWallet.fulfilled, (state, { payload }) => {
       state.userWalletAccount = payload;
       state.isWalletConnected = true;
       state.loading = false;
     });
-    builder.addCase(onConnectWallet.rejected, (state, action) => {
+    builder.addCase(connectWallet.rejected, (state, action) => {
       state.error = String(action.payload);
       state.loading = false;
     });
   },
 });
 
-export const { onClearUserError } = userSlice.actions;
+export const { clearUserError } = userSlice.actions;
 
 export default userSlice.reducer;
