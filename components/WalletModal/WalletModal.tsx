@@ -6,12 +6,13 @@ import {
   Modal,
   ModalBody,
   useDisclosure,
+  Button,
 } from "@chakra-ui/react";
 import { ModalMain, WalletCard, WalletHeading } from "./WalletModal.style";
 import useAppDispatch from "./../../hooks/useAppDispatch";
 import useAppSelector from "./../../hooks/useAppSelector";
 import { connectWallet } from "../../redux/action/user";
-import { clearUserError } from "../../redux/reducer/user";
+import { clearUserError, disconnectWallet } from "../../redux/reducer/user";
 import Alert from "./../Alert/Alert";
 import Loading from "../Loading/Loading";
 
@@ -30,6 +31,7 @@ const WalletModal: NextPage<Props> = ({ isOpen, onClose }) => {
 
   const dispatch = useAppDispatch();
   const onConnectWallet = () => dispatch(connectWallet());
+  const onDisconnectWallet = () => dispatch(disconnectWallet());
   const onClearUserError = () => dispatch(clearUserError());
 
   const {
@@ -59,6 +61,11 @@ const WalletModal: NextPage<Props> = ({ isOpen, onClose }) => {
     onAlertClose();
   };
 
+  const onDisconnectWalletHandler = () => {
+    onClose();
+    onDisconnectWallet();
+  };
+
   return (
     <>
       <Loading showModal={loading} />
@@ -85,6 +92,16 @@ const WalletModal: NextPage<Props> = ({ isOpen, onClose }) => {
               />
               <WalletHeading>Metamask</WalletHeading>
             </WalletCard>
+            {isWalletConnected && (
+              <Button
+                background="primary"
+                color="text"
+                marginTop="4"
+                onClick={onDisconnectWalletHandler}
+              >
+                Disconnect Wallet
+              </Button>
+            )}
           </ModalBody>
         </ModalMain>
       </Modal>

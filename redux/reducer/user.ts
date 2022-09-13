@@ -15,6 +15,10 @@ export const userSlice = createSlice({
     clearUserError: (state) => {
       state.error = "";
     },
+    disconnectWallet: (state) => {
+      state.isWalletConnected = false;
+      state.userWalletAccount = "";
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(connectWallet.pending, (state) => {
@@ -32,6 +36,6 @@ export const userSlice = createSlice({
   },
 });
 
-export const { clearUserError } = userSlice.actions;
+export const { clearUserError, disconnectWallet } = userSlice.actions;
 
 export default userSlice.reducer;
