@@ -7,7 +7,7 @@ const Home: NextPage = () => {
       <Head>
         <title>NFTGallery | Home</title>
       </Head>
-      <h1>Next App</h1>
+      <div></div>
     </div>
   );
 };

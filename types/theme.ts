@@ -1,4 +1,4 @@
-export type ThemeType = {
+export type SCThemeType = {
   body: string;
   primary: string;
   primaryDark: string;

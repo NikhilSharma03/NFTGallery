@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Button } from "@chakra-ui/react";
+import { Button, chakra } from "@chakra-ui/react";
 
 export const Nav = styled.nav`
   display: flex;
@@ -29,43 +29,30 @@ export const Logo = styled.h1`
   color: transparent;
 `;
 
-export const ButtonDrawer = styled(Button)`
-  background: ${({ theme }) => theme.primary};
-  font-size: 1rem;
-  display: none;
+export const ButtonDrawer = chakra(Button, {
+  baseStyle: {
+    background: "primary",
+    fontSize: "1rem",
+    display: "none",
+    _hover: {
+      background: "primaryDark",
+    },
+    "@media (max-width: 600px)": {
+      display: "inline-block",
+    },
+  },
+});
 
-  &:hover {
-    background: ${({ theme }) => theme.primaryDark};
-  }
-
-  @media (max-width: 600px) {
-    display: inline-block;
-  }
-`;
-
-export const ButtonMode = styled(Button)`
-  background: transparent;
-  font-size: 2rem;
-
-  &:hover {
-    background: transparent;
-  }
-
-  @media (max-width: 600px) {
-    display: none;
-  }
-`;
-
-export const ButtonPrimary = styled(Button)`
-  background: ${({ theme }) => theme.primary};
-  color: #fff;
-  margin-left: 1rem;
-
-  &:hover {
-    background: ${({ theme }) => theme.primaryDark};
-  }
-
-  @media (max-width: 600px) {
-    display: none;
-  }
-`;
+export const ButtonPrimary = chakra(Button, {
+  baseStyle: {
+    background: "primary",
+    color: "#fff",
+    marginLeft: "1rem",
+    _hover: {
+      background: "primaryDark",
+    },
+    "@media (max-width: 600px)": {
+      display: "none",
+    },
+  },
+});

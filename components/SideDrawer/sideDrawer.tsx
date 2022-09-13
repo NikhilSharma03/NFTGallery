@@ -10,7 +10,6 @@ import {
 import {
   SideDrawerContent,
   SideDrawerCloseButton,
-  SideDrawerButtonMode,
   SideDrawerButtonPrimary,
 } from "./sideDrawer.style";
 import WalletModal from "../WalletModal/walletModal";
@@ -20,16 +19,12 @@ type Props = {
   isSideDrawerOpen: boolean;
   openSideDrawer: () => void;
   closeSideDrawer: () => void;
-  theme: string;
-  toggleTheme: () => void;
 };
 
 const SideDrawer: NextPage<Props> = ({
   btnRef,
   isSideDrawerOpen,
   closeSideDrawer,
-  theme,
-  toggleTheme,
 }) => {
   // Connect Wallet Modal
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -46,15 +41,6 @@ const SideDrawer: NextPage<Props> = ({
         <SideDrawerCloseButton />
         <DrawerHeader></DrawerHeader>
         <DrawerBody>
-          <SideDrawerButtonMode
-            background="transparent"
-            fontSize={31}
-            onClick={toggleTheme}
-          >
-            {theme === "light" ? "🌚" : "☀️"}
-            <span>{theme === "light" ? "Dark" : "Light"}</span>
-          </SideDrawerButtonMode>
-
           <SideDrawerButtonPrimary onClick={onOpen}>
             Connect Wallet
           </SideDrawerButtonPrimary>

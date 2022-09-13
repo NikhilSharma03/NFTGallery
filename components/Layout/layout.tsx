@@ -7,27 +7,18 @@ import { useDisclosure } from "@chakra-ui/react";
 
 type Props = {
   children: React.ReactNode;
-  theme: string;
-  toggleTheme: () => void;
 };
 
-const Layout: NextPage<Props> = ({ children, theme, toggleTheme }) => {
+const Layout: NextPage<Props> = ({ children }) => {
   // SideDrawer methods
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef();
 
   return (
     <>
-      <Navbar
-        theme={theme}
-        toggleTheme={toggleTheme}
-        btnRef={btnRef}
-        openSideDrawer={onOpen}
-      />
+      <Navbar btnRef={btnRef} openSideDrawer={onOpen} />
       <Main>{children}</Main>
       <SideDrawer
-        theme={theme}
-        toggleTheme={toggleTheme}
         btnRef={btnRef}
         isSideDrawerOpen={isOpen}
         openSideDrawer={onOpen}
