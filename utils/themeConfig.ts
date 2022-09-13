@@ -4,10 +4,20 @@ import { SCThemeType } from "./../types/theme";
 
 export const SCTheme = {
   body: "#222",
+  grey: "#ccc",
   text: "#ddd",
   primary: "#7c1dc1",
   primaryDark: "#58138a",
 };
+
+export const chakraTheme = extendTheme({
+  colors: {
+    body: "#222",
+    text: "#ddd",
+    primary: "#7c1dc1",
+    primaryDark: "#58138a",
+  },
+});
 
 export const GlobalStyles = createGlobalStyle<{ theme: SCThemeType }>`
   * {
@@ -24,12 +34,3 @@ export const GlobalStyles = createGlobalStyle<{ theme: SCThemeType }>`
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   }
 `;
-
-export const chakraTheme = extendTheme({
-  colors: {
-    body: "#222",
-    text: "#ddd",
-    primary: "#7c1dc1",
-    primaryDark: "#58138a",
-  },
-});

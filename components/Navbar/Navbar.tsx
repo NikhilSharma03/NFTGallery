@@ -1,7 +1,8 @@
 import { useDisclosure } from "@chakra-ui/react";
 import type { NextPage } from "next";
-import WalletModal from "../WalletModal/walletModal";
-import { Nav, Logo, ButtonPrimary, ButtonDrawer } from "./navbar.style";
+import WalletModal from "../WalletModal/WalletModal";
+import { Nav, Logo, ButtonPrimary, ButtonDrawer } from "./Navbar.style";
+import Link from "next/link";
 
 type Props = {
   btnRef: any;
@@ -14,7 +15,9 @@ const Navbar: NextPage<Props> = ({ btnRef, openSideDrawer }) => {
 
   return (
     <Nav>
-      <Logo>NFTCRAFT</Logo>
+      <Link href="/">
+        <Logo>NFTCRAFT</Logo>
+      </Link>
       <div>
         <ButtonDrawer ref={btnRef} colorScheme="teal" onClick={openSideDrawer}>
           ☰

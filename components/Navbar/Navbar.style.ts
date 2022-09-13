@@ -27,6 +27,7 @@ export const Logo = styled.h1`
   font-weight: bold;
   background-clip: text;
   color: transparent;
+  cursor: pointer;
 `;
 
 export const ButtonDrawer = chakra(Button, {

@@ -11,8 +11,8 @@ import {
   SideDrawerContent,
   SideDrawerCloseButton,
   SideDrawerButtonPrimary,
-} from "./sideDrawer.style";
-import WalletModal from "../WalletModal/walletModal";
+} from "./SideDrawer.style";
+import WalletModal from "../WalletModal/WalletModal";
 
 type Props = {
   btnRef: any;
