@@ -17,7 +17,8 @@ export const GlobalStyles = createGlobalStyle<{ theme: SCThemeType }>`
   }
 
   body {
-    background: ${({ theme }) => theme.body} !important;
+    background: radial-gradient(circle at 24.1% 68.8%, rgb(50, 50, 50) 0%, rgb(0, 0, 0) 99.4%) !important;
+
     transition: all 0.50s linear;
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
