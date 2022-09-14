@@ -1,3 +1,10 @@
+/**
+ *  Returns response for users NFTs
+ *
+ * @param ownerAddress The address of user account wallet
+ * @param contractAddress The address of contract
+ * @returns Promise<Response> The Response data
+ */
 export const fetchUserPOLNFTs = (
   ownerAddress: string,
   contractAddress: string
