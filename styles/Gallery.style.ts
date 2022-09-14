@@ -4,7 +4,6 @@ import styled from "styled-components";
 export const Container = styled.div`
   height: 91vh;
   width: 100%;
-  overflow: hidden;
 `;
 
 export const NFTMenu = styled.div`
