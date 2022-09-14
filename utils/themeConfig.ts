@@ -4,7 +4,7 @@ import { SCThemeType } from "./../types/theme";
 
 export const SCTheme = {
   body: "#222",
-  grey: "#ccc",
+  gray: "#ccc",
   text: "#ddd",
   primary: "#7c1dc1",
   primaryDark: "#58138a",
@@ -13,6 +13,7 @@ export const SCTheme = {
 export const chakraTheme = extendTheme({
   colors: {
     body: "#222",
+    gray: "#ccc",
     text: "#ddd",
     primary: "#7c1dc1",
     primaryDark: "#58138a",

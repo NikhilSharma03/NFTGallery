@@ -1,8 +1,9 @@
 import { useDisclosure } from "@chakra-ui/react";
 import type { NextPage } from "next";
-import WalletModal from "../WalletModal/WalletModal";
-import { Nav, Logo, ButtonPrimary, ButtonDrawer } from "./Navbar.style";
 import Link from "next/link";
+import { Nav, Logo, ButtonPrimary, ButtonDrawer } from "./Navbar.style";
+import WalletModal from "../WalletModal/WalletModal";
+import useAppSelector from "./../../hooks/useAppSelector";
 
 type Props = {
   btnRef: any;
@@ -10,6 +11,13 @@ type Props = {
 };
 
 const Navbar: NextPage<Props> = ({ btnRef, openSideDrawer }) => {
+  const isWalletConnected: boolean = useAppSelector(
+    (state) => state.user.isWalletConnected
+  );
+  const userWalletAccount: string = useAppSelector(
+    (state) => state.user.userWalletAccount
+  );
+
   // Connect Wallet Modal
   const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -22,7 +30,9 @@ const Navbar: NextPage<Props> = ({ btnRef, openSideDrawer }) => {
         <ButtonDrawer ref={btnRef} colorScheme="teal" onClick={openSideDrawer}>
           ☰
         </ButtonDrawer>
-        <ButtonPrimary onClick={onOpen}>Connect</ButtonPrimary>
+        <ButtonPrimary onClick={onOpen}>
+          {isWalletConnected ? userWalletAccount : "Connect Wallet"}
+        </ButtonPrimary>
         {/* Connect Modal */}
         <WalletModal isOpen={isOpen} onClose={onClose} />
       </div>

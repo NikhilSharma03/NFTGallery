@@ -4,7 +4,6 @@ import styled from "styled-components";
 export const Container = styled.div`
   height: 91vh;
   width: 100%;
-  overflow: hidden;
 `;
 
 export const NFTMenu = styled.div`
@@ -21,7 +20,7 @@ export const NFTMenu = styled.div`
 
   &::-webkit-scrollbar-track {
     border-radius: 1rem;
-    background-color: ${({ theme }) => theme.grey};
+    background-color: ${({ theme }) => theme.gray};
     -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   }
 

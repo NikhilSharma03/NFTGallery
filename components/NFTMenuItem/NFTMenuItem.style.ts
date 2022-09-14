@@ -6,6 +6,8 @@ export const NFTMenuItemContainer = chakra(Box, {
     cursor: "pointer",
     marginRight: "2rem",
     transition: "all .3s",
+    borderRadius: "5px",
+    background: "#000",
     _last: {
       marginRight: "0",
     },
@@ -17,12 +19,11 @@ export const NFTMenuItemContainer = chakra(Box, {
 
 export const NFTMenuItemImageContainer = chakra(Box, {
   baseStyle: {
-    width: "20rem",
-    height: "25rem",
+    width: "15rem",
+    height: "15rem",
     position: "relative",
     borderRadius: "5px",
     overflow: "hidden",
-
     "@media(max-width: 900px)": {
       width: "15rem",
       height: "20rem",
